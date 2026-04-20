@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "DEPLOY_TARGET=cloudflare astro build",
+		"build": "DEPLOY_TARGET=cloudflare astro build && node scripts/patch-wrangler-config.mjs",
 		"preview": "astro preview",
 		"start": "node ./dist/server/entry.mjs",
 		"seed": "emdash seed --on-conflict=update",
