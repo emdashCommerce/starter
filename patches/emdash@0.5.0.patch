@@ -1,0 +1,62 @@
+diff --git a/dist/astro/middleware.mjs b/dist/astro/middleware.mjs
+index f7a3dcb930371a4338c3418fdb767baf4144b42c..3ea00669a085a0fbeba55d948c8fead648a77cff 100644
+--- a/dist/astro/middleware.mjs
++++ b/dist/astro/middleware.mjs
+@@ -1254,7 +1254,7 @@ var EmDashRuntime = class EmDashRuntime {
+ 			const routeKey = path.replace(LEADING_SLASH_PATTERN, "");
+ 			let body = void 0;
+ 			try {
+-				body = await request.json();
++				body = await request.clone().json();
+ 			} catch {}
+ 			return routeRegistry.invoke(pluginId, routeKey, {
+ 				request,
+@@ -1387,7 +1387,7 @@ var EmDashRuntime = class EmDashRuntime {
+ 		const routeName = path.replace(LEADING_SLASH_PATTERN, "");
+ 		let body = void 0;
+ 		try {
+-			body = await request.json();
++			body = await request.clone().json();
+ 		} catch {}
+ 		try {
+ 			const headers = sanitizeHeadersForSandbox(request.headers);
+diff --git a/src/astro/routes/api/plugins/[pluginId]/[...path].ts b/src/astro/routes/api/plugins/[pluginId]/[...path].ts
+index b295a642565f495ae12215c3c7be7494bc4ba43b..285539036ba344c43726b12fdf8f757c5247558d 100644
+--- a/src/astro/routes/api/plugins/[pluginId]/[...path].ts
++++ b/src/astro/routes/api/plugins/[pluginId]/[...path].ts
+@@ -81,6 +81,13 @@ const handleRequest: APIRoute = async ({ params, request, locals }) => {
+ 		return apiError(code, message, status);
+ 	}
+ 
++	// Handlers may return a raw Response (status, headers, JSON body). The
++	// default success path uses apiSuccess(), which would serialize a Response
++	// as {} and drop Set-Cookie. Pass through so plugin routes control the wire.
++	if (result.data instanceof Response) {
++		return result.data;
++	}
++
+ 	return apiSuccess(result.data);
+ };
+ 
+diff --git a/src/emdash-runtime.ts b/src/emdash-runtime.ts
+index be83a7d5aee97cce76ff5dd775bd978e9e2fdd22..7630ab6809ad2470638de1a459f21897857d4a41 100644
+--- a/src/emdash-runtime.ts
++++ b/src/emdash-runtime.ts
+@@ -1869,7 +1869,7 @@ export class EmDashRuntime {
+ 
+ 			let body: unknown = undefined;
+ 			try {
+-				body = await request.json();
++				body = await request.clone().json();
+ 			} catch {
+ 				// No body or not JSON
+ 			}
+@@ -2096,7 +2096,7 @@ export class EmDashRuntime {
+ 
+ 		let body: unknown = undefined;
+ 		try {
+-			body = await request.json();
++			body = await request.clone().json();
+ 		} catch {
+ 			// No body or not JSON
+ 		}

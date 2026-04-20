@@ -6,8 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro build",
-		"build:cf": "DEPLOY_TARGET=cloudflare astro build",
+		"build": "DEPLOY_TARGET=cloudflare astro build",
 		"preview": "astro preview",
 		"start": "node ./dist/server/entry.mjs",
 		"seed": "emdash seed --on-conflict=update",
@@ -17,7 +16,8 @@
 		"cf:dev": "bun run build:cf && wrangler dev --config dist/server/wrangler.json",
 		"cf:d1:create": "wrangler d1 create dashcommerce-demo",
 		"cf:d1:seed": "bun run bootstrap && sqlite3 data.db .dump | grep -v -E '^(PRAGMA|BEGIN|COMMIT|CREATE TABLE sqlite_)' > .emdash/d1-seed.sql && wrangler d1 execute dashcommerce-demo --remote --file=.emdash/d1-seed.sql",
-		"typecheck": "astro check"
+		"typecheck": "astro check",
+		"build:node": "astro build"
 	},
 	"emdash": {
 		"label": "DashCommerce Starter",
@@ -55,5 +55,8 @@
 		"ecommerce",
 		"starter"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"patchedDependencies": {
+		"emdash@0.5.0": "patches/emdash@0.5.0.patch"
+	}
 }
