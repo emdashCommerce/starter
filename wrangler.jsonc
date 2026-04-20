@@ -4,12 +4,6 @@
 	"compatibility_date": "2026-04-01",
 	"compatibility_flags": ["nodejs_compat"],
 
-	"main": "./dist/server/entry.mjs",
-	"assets": {
-		"directory": "./dist/client",
-		"binding": "ASSETS"
-	},
-
 	// `main` and `assets` are intentionally omitted here. @astrojs/cloudflare
 	// v13+ emits a fully-resolved `dist/server/wrangler.json` at build time
 	// that merges these fields with the bindings + vars below. Always deploy
