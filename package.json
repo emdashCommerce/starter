@@ -2,11 +2,11 @@
 	"name": "@dashcommerce/starter",
 	"version": "0.3.0",
 	"private": true,
-	"description": "DashCommerce starter — a full Astro commerce site. Clone, configure Stripe keys, go.",
+	"description": "DashCommerce starter \u2014 a full Astro commerce site. Clone, configure Stripe keys, go.",
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro build",
+		"build": "DEPLOY_TARGET=cloudflare astro build && node scripts/patch-wrangler-config.mjs",
 		"build:cf": "DEPLOY_TARGET=cloudflare astro build && node scripts/patch-wrangler-config.mjs",
 		"preview": "astro preview",
 		"start": "node ./dist/server/entry.mjs",
@@ -17,7 +17,8 @@
 		"cf:dev": "bun run build:cf && wrangler dev --config dist/server/wrangler.json",
 		"cf:d1:create": "wrangler d1 create dashcommerce-demo",
 		"cf:d1:seed": "node scripts/cf-d1-seed.mjs",
-		"typecheck": "astro check"
+		"typecheck": "astro check",
+		"build:node": "astro build"
 	},
 	"emdash": {
 		"label": "DashCommerce Starter",
