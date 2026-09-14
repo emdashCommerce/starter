@@ -42,7 +42,7 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.0",
-		"@cloudflare/workers-types": "^4.20260305.1",
+		"@cloudflare/workers-types": "^5.20260911.1",
 		"@types/node": "^22.0.0",
 		"@types/react": "^19.0.0",
 		"@types/react-dom": "^19.0.0",
