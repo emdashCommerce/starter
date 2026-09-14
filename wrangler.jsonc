@@ -28,7 +28,7 @@
 		{
 			"binding": "DB",
 			"database_name": "dashcommerce-demo",
-			"database_id": "REPLACE_AFTER_WRANGLER_D1_CREATE"
+			"database_id": "8d8fb698-1954-41cb-bc25-d6e77053dc85"
 		}
 	],
 	"r2_buckets": [
