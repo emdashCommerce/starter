@@ -6,7 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "DEPLOY_TARGET=cloudflare astro build && node scripts/patch-wrangler-config.mjs",
+		"build": "astro build",
+		"build:cf": "DEPLOY_TARGET=cloudflare astro build && node scripts/patch-wrangler-config.mjs",
 		"preview": "astro preview",
 		"start": "node ./dist/server/entry.mjs",
 		"seed": "emdash seed --on-conflict=update",
@@ -16,8 +17,7 @@
 		"cf:dev": "bun run build:cf && wrangler dev --config dist/server/wrangler.json",
 		"cf:d1:create": "wrangler d1 create dashcommerce-demo",
 		"cf:d1:seed": "node scripts/cf-d1-seed.mjs",
-		"typecheck": "astro check",
-		"build:node": "astro build"
+		"typecheck": "astro check"
 	},
 	"emdash": {
 		"label": "DashCommerce Starter",
@@ -30,12 +30,12 @@
 		"@astrojs/node": "^10.0.0",
 		"@astrojs/react": "^5.0.0",
 		"@astrojs/sitemap": "^3.4.0",
-		"@dashcommerce/core": "^0.1.4",
-		"@emdash-cms/cloudflare": "^0.6.0",
+		"@dashcommerce/core": "^0.2.0",
+		"@emdash-cms/cloudflare": "^0.37.0",
 		"@stripe/react-stripe-js": "^6.0.0",
 		"@stripe/stripe-js": "^9.0.0",
 		"astro": "^6.0.0",
-		"emdash": "^0.6.0",
+		"emdash": "^0.37.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
@@ -57,6 +57,6 @@
 	],
 	"license": "MIT",
 	"patchedDependencies": {
-		"emdash@0.6.0": "patches/emdash@0.6.0.patch"
+		"emdash@0.37.0": "patches/emdash@0.37.0.patch"
 	}
 }
