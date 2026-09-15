@@ -1,16 +1,27 @@
-# @dashcommerce/starter
+# DashCommerce Starter
 
-**v0.2.0** — a ready-to-run Astro commerce site built on [EmDash CMS](https://github.com/emdash-cms/emdash) 0.5 and **`@dashcommerce/core@0.1.3`**. Every feature category the core plugin ships is exercised by a real page.
-
-**Live demo:** [demo.dashcommerce.dev](https://demo.dashcommerce.dev) · **Templates:** [dashcommerce.dev/templates](https://dashcommerce.dev/templates)
-
-## Quick start
+**The official starter template for [DashCommerce](https://github.com/emdashCommerce/dashcommerce)** — a production-ready Astro commerce site with Stripe checkout, subscriptions, blog, and full CMS control.
 
 ```sh
 npm create @dashcommerce@latest
 ```
 
-Prompts for a project directory + template, downloads the starter, installs, commits. Then:
+**[🚀 Live Demo](https://demo.dashcommerce.dev)** • EmDash 0.37 + @dashcommerce/core ^0.2.0
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdashCommerce/starter)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template?template=https://github.com/emdashCommerce/starter)
+
+---
+
+## Quick Start
+
+Run the create command and follow the prompts:
+
+```sh
+npm create @dashcommerce@latest
+```
+
+The CLI will prompt for a project directory, download the starter, install dependencies, and commit. Then:
 
 ```sh
 cd <your-project>
@@ -20,12 +31,14 @@ bun run dev         # Astro at :4321
 
 Open [http://localhost:4321](http://localhost:4321) — hero with "Enamel Mug" and a product grid. Paste your Stripe test keys at `/_emdash/admin/plugins/dashcommerce/settings` and you're exercising a real checkout in under a minute.
 
-Prefer to clone directly? Works too:
+**Or clone directly:**
 
 ```sh
 git clone https://github.com/emdashCommerce/starter
 cd starter && bun install && bun run bootstrap && bun run dev
 ```
+
+> **Powered by [DashCommerce](https://github.com/emdashCommerce/dashcommerce)** — a composable commerce plugin for EmDash CMS. Check out the [main repo](https://github.com/emdashCommerce/dashcommerce) for documentation, guides, and contributing info.
 
 ## What you get
 
@@ -96,11 +109,13 @@ Rebuild the seed from its TypeScript source with `bun .emdash/build-seed.ts`.
 
 ## Deploy
 
-When you're ready to ship, the starter builds for three targets from one codebase. `astro.config.mjs` branches on env vars. Expect to do some post-click configuration on the hosted options — these buttons get you into the provider's dashboard with sensible defaults, not an instant production site.
+The starter builds for three targets from one codebase. `astro.config.mjs` branches on env vars. Choose your platform:
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdashCommerce/starter)
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template?template=https://github.com/emdashCommerce/starter)
-[![Run with Docker](https://img.shields.io/badge/Run%20with-Docker-2496ED?logo=docker&logoColor=white)](#docker)
+- **Cloudflare Workers** (D1 + R2) — serverless edge with sub-100ms global latency
+- **Railway** (Node + Postgres) — full Node.js runtime with managed Postgres
+- **Docker** — portable container for Fly, Render, ECS, Kubernetes, or bare metal
+
+Click the deploy buttons at the top of this README or follow the platform-specific guides below.
 
 ### Cloudflare Workers (D1 + R2)
 
