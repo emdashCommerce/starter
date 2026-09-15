@@ -6,7 +6,8 @@ import { dashcommerce } from "@dashcommerce/core";
 import { d1, r2 } from "@emdash-cms/cloudflare";
 import { defineConfig, passthroughImageService } from "astro/config";
 import emdash, { local, s3 } from "emdash/astro";
-import { github, google } from "emdash/auth/providers";
+import { github } from "emdash/auth/providers/github";
+import { google } from "emdash/auth/providers/google";
 import { postgres, sqlite } from "emdash/db";
 
 // Three deploy targets share this config:
