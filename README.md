@@ -1,27 +1,16 @@
-# DashCommerce Starter
+# @dashcommerce/starter
 
-**The official starter template for [DashCommerce](https://github.com/emdashCommerce/dashcommerce)** — a production-ready Astro commerce site with Stripe checkout, subscriptions, blog, and full CMS control.
+**v0.2.0** — a ready-to-run Astro commerce site built on [EmDash CMS](https://github.com/emdash-cms/emdash) 0.5 and **`@dashcommerce/core@0.1.3`**. Every feature category the core plugin ships is exercised by a real page.
 
-```sh
-npm create @dashcommerce@latest
-```
+**Live demo:** [demo.dashcommerce.dev](https://demo.dashcommerce.dev) · **Templates:** [dashcommerce.dev/templates](https://dashcommerce.dev/templates)
 
-**[🚀 Live Demo](https://demo.dashcommerce.dev)** • EmDash 0.37 + @dashcommerce/core ^0.2.0
-
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdashCommerce/starter)
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template?template=https://github.com/emdashCommerce/starter)
-
----
-
-## Quick Start
-
-Run the create command and follow the prompts:
+## Quick start
 
 ```sh
 npm create @dashcommerce@latest
 ```
 
-The CLI will prompt for a project directory, download the starter, install dependencies, and commit. Then:
+Prompts for a project directory + template, downloads the starter, installs, commits. Then:
 
 ```sh
 cd <your-project>
@@ -31,14 +20,12 @@ bun run dev         # Astro at :4321
 
 Open [http://localhost:4321](http://localhost:4321) — hero with "Enamel Mug" and a product grid. Paste your Stripe test keys at `/_emdash/admin/plugins/dashcommerce/settings` and you're exercising a real checkout in under a minute.
 
-**Or clone directly:**
+Prefer to clone directly? Works too:
 
 ```sh
 git clone https://github.com/emdashCommerce/starter
 cd starter && bun install && bun run bootstrap && bun run dev
 ```
-
-> **Powered by [DashCommerce](https://github.com/emdashCommerce/dashcommerce)** — a composable commerce plugin for EmDash CMS. Check out the [main repo](https://github.com/emdashCommerce/dashcommerce) for documentation, guides, and contributing info.
 
 ## What you get
 
@@ -92,58 +79,6 @@ Open the order in admin → **Refund** → full or partial → confirm. Order fl
 
 Add `SUB-001` (Monthly Box) to cart → checkout. Stripe creates a Subscription with a 7-day trial. The `/subscriptions/[token]` page gives the customer self-service controls. `invoice.payment_succeeded` on cycle invoices triggers the renewal email; `invoice.payment_failed` starts the dunning flow.
 
-## OAuth Authentication
-
-The starter includes Google and GitHub OAuth for admin login. Admins are matched by verified email address — if an existing admin user's email matches the OAuth profile, EmDash links the account automatically on first login.
-
-### Required environment variables
-
-Set these as **Cloudflare Worker secrets** (for Workers deployment) or standard environment variables (for Node/Railway/Docker):
-
-**Google OAuth:**
-```sh
-EMDASH_OAUTH_GOOGLE_CLIENT_ID=your-client-id
-EMDASH_OAUTH_GOOGLE_CLIENT_SECRET=your-client-secret
-```
-
-**GitHub OAuth:**
-```sh
-EMDASH_OAUTH_GITHUB_CLIENT_ID=your-client-id
-EMDASH_OAUTH_GITHUB_CLIENT_SECRET=your-client-secret
-```
-
-### Setting up OAuth providers
-
-**Google Cloud Console:**
-1. Create a project at [console.cloud.google.com](https://console.cloud.google.com)
-2. Navigate to **APIs & Services → Credentials**
-3. Create **OAuth 2.0 Client ID** (Application type: Web application)
-4. Add authorized redirect URI: `https://your-domain/_emdash/api/auth/oauth/google/callback`
-   - For local dev: `http://localhost:4321/_emdash/api/auth/oauth/google/callback`
-5. Copy the Client ID and Client Secret
-
-**GitHub OAuth App:**
-1. Go to [github.com/settings/developers](https://github.com/settings/developers)
-2. Click **New OAuth App**
-3. Set Authorization callback URL: `https://your-domain/_emdash/api/auth/oauth/github/callback`
-   - For local dev: `http://localhost:4321/_emdash/api/auth/oauth/github/callback`
-4. Copy the Client ID and generate a Client Secret
-
-### Cloudflare Workers secrets
-
-For Cloudflare deployments, set secrets using `wrangler`:
-
-```sh
-echo "your-google-client-id" | wrangler secret put EMDASH_OAUTH_GOOGLE_CLIENT_ID
-echo "your-google-client-secret" | wrangler secret put EMDASH_OAUTH_GOOGLE_CLIENT_SECRET
-echo "your-github-client-id" | wrangler secret put EMDASH_OAUTH_GITHUB_CLIENT_ID
-echo "your-github-client-secret" | wrangler secret put EMDASH_OAUTH_GITHUB_CLIENT_SECRET
-```
-
-Alternatively, set them in the Cloudflare Dashboard under **Workers & Pages → [Your Worker] → Settings → Variables**.
-
-**Note:** Without these secrets configured, the OAuth buttons will appear on the login page but will fail with `OAuth provider <name> is not configured`.
-
 ## Demo seed catalog
 
 Six products spanning every DashCommerce type:
@@ -161,13 +96,11 @@ Rebuild the seed from its TypeScript source with `bun .emdash/build-seed.ts`.
 
 ## Deploy
 
-The starter builds for three targets from one codebase. `astro.config.mjs` branches on env vars. Choose your platform:
+When you're ready to ship, the starter builds for three targets from one codebase. `astro.config.mjs` branches on env vars. Expect to do some post-click configuration on the hosted options — these buttons get you into the provider's dashboard with sensible defaults, not an instant production site.
 
-- **Cloudflare Workers** (D1 + R2) — serverless edge with sub-100ms global latency
-- **Railway** (Node + Postgres) — full Node.js runtime with managed Postgres
-- **Docker** — portable container for Fly, Render, ECS, Kubernetes, or bare metal
-
-Click the deploy buttons at the top of this README or follow the platform-specific guides below.
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdashCommerce/starter)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template?template=https://github.com/emdashCommerce/starter)
+[![Run with Docker](https://img.shields.io/badge/Run%20with-Docker-2496ED?logo=docker&logoColor=white)](#docker)
 
 ### Cloudflare Workers (D1 + R2)
 
