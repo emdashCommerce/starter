@@ -9,7 +9,7 @@
         "@astrojs/node": "^10.0.0",
         "@astrojs/react": "^5.0.0",
         "@astrojs/sitemap": "^3.4.0",
-        "@dashcommerce/core": "^0.3.5",
+        "@dashcommerce/core": "^0.3.6",
         "@emdash-cms/cloudflare": "^1.5.0",
         "@stripe/react-stripe-js": "^6.0.0",
         "@stripe/stripe-js": "^9.0.0",
@@ -189,7 +189,7 @@
 
     "@cspotcode/source-map-support": ["@cspotcode/source-map-support@0.8.1", "", { "dependencies": { "@jridgewell/trace-mapping": "0.3.9" } }, "sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw=="],
 
-    "@dashcommerce/core": ["@dashcommerce/core@0.3.5", "", { "peerDependencies": { "emdash": ">=0.37.0 <0.38.0 || >=1.1.0 <1.6.0", "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["react", "react-dom"], "bin": { "dashcommerce-merge-seed": "dist/cli/merge-seed.js" } }, "sha512-q25JaIxFA0EMprxGnqFOjyaRMvhakEMoHS8hJs8LMHBylk5YaPQo3Y3pgTpEF3VjqHTnKtirHs+/h4AImNeV7g=="],
+    "@dashcommerce/core": ["@dashcommerce/core@0.3.6", "", { "peerDependencies": { "emdash": ">=0.37.0 <0.38.0 || >=1.1.0 <1.6.0", "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["react", "react-dom"], "bin": { "dashcommerce-merge-seed": "dist/cli/merge-seed.js" } }, "sha512-pla6+rp5eWt5jA0fwtl8WWkl7AuBWqGjRfS4bziNX4bA9eqyGV2xhQuQHseCJLjx7gZ97YWor+ECWov7U090Dg=="],
 
     "@date-fns/tz": ["@date-fns/tz@1.5.0", "", {}, "sha512-lwYN/vDPeNRULcepoE/LO2Pgx+7/RV+S9ARfbc9lr2DtGkOD7pAiruHvbR1RX3Qyf6ja47EWJDMsNK5vK08DJg=="],
 
